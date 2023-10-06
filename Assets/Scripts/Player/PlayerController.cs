@@ -111,9 +111,9 @@ public class PlayerController : MonoBehaviour
 
         for (int i = 0; i < rays.Length; i++)
         {
-            if (Physics.Raycast(rays[i], 0.1f, groundLayerMask))
+            if (Physics.Raycast(rays[i], 0.1f, groundLayerMask)) // Ray를 0.1길이만큼 쏴서 그 안에 groundLayerMask가 찍히면
             {
-                return true;
+                return true; // 점프 가능
             }
         }
 
