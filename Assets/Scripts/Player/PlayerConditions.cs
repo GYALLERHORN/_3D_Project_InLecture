@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public interface IDamagable
+public interface IDamagable // Damage를 받는 오브젝트의 인터페이스
 {
     void TakePhysicalDamage(int damageAmount);
 }
@@ -29,7 +29,7 @@ public class Condition
         curValue = Mathf.Min(curValue - amount, maxValue);
     }
     
-    public float GetPaercentage()
+    public float GetPercentage()
     {
         return curValue / maxValue;
     }
@@ -43,7 +43,7 @@ public class PlayerConditions : MonoBehaviour, IDamagable
 
     public float noHungerHealthDecay;
 
-    public UnityEvent onTakeDamage;
+    public UnityEvent onTakeDamage; // 이거 하나도 이벤트 만들기 끝
 
     void Start()
     {
@@ -71,9 +71,9 @@ public class PlayerConditions : MonoBehaviour, IDamagable
             Die();
         }
 
-        health.uiBar.fillAmount = health.GetPaercentage();
-        hunger.uiBar.fillAmount = hunger.GetPaercentage();
-        stamina.uiBar.fillAmount = stamina.GetPaercentage();
+        health.uiBar.fillAmount = health.GetPercentage();
+        hunger.uiBar.fillAmount = hunger.GetPercentage();
+        stamina.uiBar.fillAmount = stamina.GetPercentage();
     }
 
     public void Heal(float amount)

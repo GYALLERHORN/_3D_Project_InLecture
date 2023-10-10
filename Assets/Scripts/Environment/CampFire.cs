@@ -7,7 +7,7 @@ public class CampFire : MonoBehaviour
     public int Damage;
     public float damageRate;
 
-    private List<IDamagable> thingsToDamage = new List<IDamagable>();
+    private List<IDamagable> thingsToDamage = new List<IDamagable>(); // 왜 List? 데미지를 받는 오브젝트가 플레이어 하나는 아닐 테니까
 
     private void Start()
     {

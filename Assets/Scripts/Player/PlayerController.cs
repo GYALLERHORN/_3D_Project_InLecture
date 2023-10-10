@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour // 플레이어의 외부 작용 없이 행동하는 코드
 {
     [Header("MoveMent")]
     public float moveSpeed;
@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
     void CameraLook()
     {
         camCurXRot += mouseDelta.y * lookSensitivity;
-        camCurXRot = Mathf.Clamp(camCurXRot, minXLook, maxXLook); // ??
+        camCurXRot = Mathf.Clamp(camCurXRot, minXLook, maxXLook); // ?? 플레이어 세로 시야각 한계 설정, -85도~85도
         cameraContainer.localEulerAngles = new Vector3(-camCurXRot, 0, 0);
 
         transform.eulerAngles += new Vector3(0, mouseDelta.x * lookSensitivity, 0);
@@ -97,6 +97,12 @@ public class PlayerController : MonoBehaviour
                 _rigidbody.AddForce(Vector2.up * jumpforce, ForceMode.Impulse); 
             }
         }
+    }
+
+    public void ToggleCuror(bool toggle)
+    {
+        Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;
+        canlook = !toggle;
     }
 
     private bool IsGrounded()
